@@ -9,7 +9,7 @@ variables:
   URL_PROD: "http://example"
 
 
-deploy:
+deploy_review:
   stage: deploy
   environment:
     name: production
