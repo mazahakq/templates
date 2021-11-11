@@ -18,12 +18,4 @@ build:
   only:
     - master
 
-deploy:
-  stage: deploy
-  environment:
-    name: production
-    url: $URL_PROD
-  script:
-    - docker-compose up -d
-  only:
-    - master
+include: '/docker/.gitlab-ci-deploy.yml'
