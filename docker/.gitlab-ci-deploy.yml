@@ -25,7 +25,7 @@ deploy:
 stop_review:
   stage: deploy
   script:
-    - echo "Remove review app"
+    - docker-compose down
   environment:
     name: production
     action: stop
