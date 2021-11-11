@@ -19,8 +19,6 @@ deploy:
     - docker-compose up -d
   only:
     - master
-  rules:
-    - if: $CI_MERGE_REQUEST_ID
 
 stop_review:
   stage: deploy
@@ -29,6 +27,3 @@ stop_review:
   environment:
     name: production
     action: stop
-  rules:
-    - if: $CI_MERGE_REQUEST_ID
-      when: manual
