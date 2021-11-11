@@ -1,0 +1,19 @@
+default:
+  tags:
+    - shell
+
+stages:
+  - deploy
+
+variables:
+  URL_PROD: "http://example"
+
+deploy:
+  stage: deploy
+  environment:
+    name: production
+    url: $URL_PROD
+  script:
+    - docker-compose up -d
+  only:
+    - master

@@ -1,0 +1,29 @@
+default:
+  tags:
+    - shell
+
+stages:
+  - build
+  - deploy
+
+variables:
+  URL_PROD: "http://example"
+
+build:
+  stage: build
+  before_script:
+    - git submodule sync && git submodule update --init
+  script:
+    - docker-compose build
+  only:
+    - master
+
+deploy:
+  stage: deploy
+  environment:
+    name: production
+    url: $URL_PROD
+  script:
+    - docker-compose up -d
+  only:
+    - master
