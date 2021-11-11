@@ -1,0 +1,20 @@
+default:
+  tags:
+    - shell
+
+stages:
+  - delete
+
+variables:
+  URL_PROD: "http://example"
+
+delete:
+  stage: delete
+  environment:
+    name: production
+    url: $URL_PROD
+    action: stop
+  script:
+    - docker-compose down
+  only:
+    - master
