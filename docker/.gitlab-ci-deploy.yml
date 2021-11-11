@@ -22,8 +22,9 @@ deploy:
 
 stop_review:
   stage: deploy
-  script:
-    - docker-compose down
   environment:
     name: production
     action: stop
+  script:
+    - docker-compose down
+  when: manual
