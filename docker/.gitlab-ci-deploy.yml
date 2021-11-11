@@ -8,12 +8,27 @@ stages:
 variables:
   URL_PROD: "http://example"
 
+
 deploy:
   stage: deploy
   environment:
     name: production
     url: $URL_PROD
+    on_stop: stop_review
   script:
     - docker-compose up -d
   only:
     - master
+  rules:
+    - if: $CI_MERGE_REQUEST_ID
+
+stop_review:
+  stage: deploy
+  script:
+    - echo "Remove review app"
+  environment:
+    name: production
+    action: stop
+  rules:
+    - if: $CI_MERGE_REQUEST_ID
+      when: manual
