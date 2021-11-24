@@ -7,7 +7,7 @@ stages:
 
 variables:
   URL_PROD: "http://example"
-  APP_NAME: "MYDEPLOY"
+  APP_NAME: $URL_PROD
   TEST_ENV_URL: $URL_PROD
   TEST_APP_NAME: $APP_NAME
 
