@@ -7,6 +7,7 @@ stages:
 
 variables:
   URL_PROD: "http://example"
+  TEST_ENV_URL: $URL_PROD
 
 
 deploy_review:
@@ -16,6 +17,7 @@ deploy_review:
     url: $URL_PROD
     on_stop: stop_review
   script:
+    - echo $TEST_ENV_URL
     - docker-compose up -d
   only:
     - master
